@@ -215,7 +215,7 @@ namespace DeliveryToolkit.ViewModel
                 IsNoProcessRunning = true;
                 IsProcessEnable = true;
             }
-            Notice.Show($"文件处理结果：\n成功 {okCount} 失败 {errorCount}\n 输出文件夹位于PPT文件目录", "成功", Panuon.UI.Silver.MessageBoxIcon.Success);
+            Notice.Show($"文件处理结果：\n成功 {okCount} 失败 {errorCount}\n 输出文件夹位于PPT文件目录", "任务结束", Panuon.UI.Silver.MessageBoxIcon.Success);
         }
 
         private async Task<string> ConvertPPTToPDFAsync(string inputFile)
@@ -240,7 +240,7 @@ namespace DeliveryToolkit.ViewModel
                     }
                     catch (Exception error)
                     {
-                        MessageBoxX.Show("Office转换文件失败，请检查Office是否正确安装","错误");
+                        MessageBoxX.Show("Office转换文件失败，请检查Office是否正确安装", "错误");
                         Analytics.TrackEvent("OfficeError", new Dictionary<string, string>
                         {
                             ["message"] = error.ToString()

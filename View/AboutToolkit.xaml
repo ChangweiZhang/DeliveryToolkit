@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DeliveryToolkit.View" xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
              mc:Ignorable="d" 
+             xmlns:svc="clr-namespace:DeliveryToolkit.Service"
              xmlns:AduOpenLink="clr-namespace:AduSkin.Interactivity;assembly=AduSkin"
              xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -19,7 +20,7 @@
                 Style="{StaticResource ShowControlBorder}">
                         <StackPanel>
                             <Metro:AduButtonSvg 
-                        Foreground="{DynamicResource DefaultBrush}"
+                        Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}"
                         Padding="0"
                         FontSize="30"
                         IconHeight="40"
@@ -74,7 +75,7 @@
                 Style="{StaticResource ShowControlBorder}">
                         <StackPanel HorizontalAlignment="Center">
                             <Metro:AduButtonSvg 
-                        Foreground="{DynamicResource DefaultBrush}"
+                        Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}"
                         Padding="0"
                         FontSize="30"
                         IconHeight="40"

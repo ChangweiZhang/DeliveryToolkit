@@ -8,6 +8,7 @@
              xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors" x:Class="DeliveryToolkit.View.PPTMarkupTool"
              mc:Ignorable="d"
+    xmlns:svc="clr-namespace:DeliveryToolkit.Service"
              DataContext="{Binding PPTTool, Source={StaticResource Locator}}"
              d:DesignHeight="600" d:DesignWidth="800"
              >
@@ -30,6 +31,7 @@
                 HorizontalAlignment="Stretch"
                 Title="目录路径"
                 ButtonTitle="选取文件夹"
+                Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}"
                 Text="{Binding PPTFolder}"
                 IsEnabled="{Binding IsNoProcessRunning}">
 
@@ -72,15 +74,15 @@
                     pu:TextBoxHelper.CornerRadius="1"
                     VerticalContentAlignment="Center"
                     pu:TextBoxHelper.Icon="&#xf031;"
-                    Foreground="{DynamicResource DefaultBrush}"
+                    Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}"
                     HorizontalAlignment="Stretch"
                     Text="{Binding FontSize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                    IsEnabled="{Binding IsNoProcessRunning}">
+                    IsEnabled="{Binding IsNoProcessRunning}" Cursor="IBeam">
                 </TextBox>
                 <pu:ColorPicker
                     Grid.Column="2"
                     Margin="10"
-                    Foreground="{DynamicResource DefaultBrush}"
+                    Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}"
                     IsOpacityEnabled="True"
                     IsMeasuredValueVisible="True"
                     IsDefaultColorPanelVisible="True" 
@@ -96,7 +98,7 @@
                     CornerRadius="3"
                     ItemsSource="{Binding FontList}"
                     DisplayMemberPath="Name"
-                    Foreground="{DynamicResource DefaultBrush}">
+                    Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}">
                 </Metro:AduComboBox>
             </Grid>
 
@@ -105,12 +107,11 @@
                     Height="40"
                     Content="添加水印"
                     Margin="0,15,0,0"
-                    pu:ButtonHelper.ClickStyle="Sink"
                     pu:ButtonHelper.CornerRadius="5"
                     HorizontalAlignment="Center"
-                    Background="{DynamicResource DefaultBrush}"
+                    Background="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}"
                     IsEnabled="{Binding IsProcessEnable}"
-                    MinWidth="250"
+                    Width="250"
                     Command="{Binding RunPPTProcessCommand}"></Button>
         </StackPanel>
         <ProgressBar  
@@ -153,14 +154,13 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding FullName}" 
                                        Style="{StaticResource H5}"
-                                       Foreground="{DynamicResource DefaultBrush}" 
-                                       Metro:TextBlockService.HighlightText="{Binding Text, ElementName=SearchKey}" 
+                                       Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}" 
                                        Margin="20,0" 
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"/>
                             <Border Grid.Column="1" 
                                     x:Name="states" 
-                                    Background="{DynamicResource DefaultBrush}" 
+                                    Background="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}" 
                                     CornerRadius="8"
                                     Height="20"
                                     MinWidth="30"

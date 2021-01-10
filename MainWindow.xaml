@@ -1,4 +1,5 @@
 ﻿<Metro:MetroWindow x:Class="DeliveryToolkit.MainWindow"
+                   xmlns:svc="clr-namespace:DeliveryToolkit.Service"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,11 +12,12 @@
         WindowStartupLocation="CenterScreen"
         DataContext="{Binding Source={StaticResource Locator},Path=Main}"
         Title="DeliveryToolkit" Height="600" Width="800"
-        Icon="/Image/toolkit.png">
+        Icon="/Image/toolkit.png"
+                   BorderBrush="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}">
    
     <Metro:MetroWindow.Menu>
         <Metro:MetroTitleMenu Height="40"
-                             >
+                             Background="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}">
             <Metro:MetroTitleMenuItem 
                 Header="&#xf013;"
                 FontSize="16"
@@ -36,13 +38,13 @@
                             Orientation="Horizontal">
                             <Metro:MetroTextBlock Text="主题色" 
                                        VerticalAlignment="Center"
-                                       Foreground="{DynamicResource DefaultBrush}"/>
+                                       Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}"/>
                             <pu:ColorPicker  
                                 Width="50"
                                 Height="28"
                                 Margin="10,0"
                                 Background="Transparent"
-                                SelectedBrush="{DynamicResource DefaultBrush}"
+                                SelectedBrush="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}"
                                 BorderThickness="0"
                                 IsTextVisible="False"
                                 x:Name="Theme"></pu:ColorPicker>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DeliveryToolkit": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
