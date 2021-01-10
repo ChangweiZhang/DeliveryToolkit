@@ -8,16 +8,17 @@
              xmlns:AduOpenLink="clr-namespace:AduSkin.Interactivity;assembly=AduSkin"
              xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="20">
-
-        <Metro:MetroWaterfallFlow
-            ListWidth="300"
-            >
-            <Grid>
-                <Border MinWidth="150"
+    <Grid
+          Margin="20">
+        <Metro:MetroScrollViewer HorizontalScrollBarVisibility="Disabled">
+            <Metro:MetroWaterfallFlow
+                ListWidth="300"
+                >
+                <Grid>
+                    <Border MinWidth="150"
                 Style="{StaticResource ShowControlBorder}">
-                    <StackPanel>
-                        <Metro:AduButtonSvg 
+                        <StackPanel>
+                            <Metro:AduButtonSvg 
                         Foreground="{DynamicResource DefaultBrush}"
                         Padding="0"
                         FontSize="30"
@@ -27,103 +28,159 @@
                         Width="50"
                         Margin="0,20,0,5"
                         Background="Transparent">
-                            <Metro:AduButtonSvg.Icon>
-                                <CombinedGeometry 
+                                <Metro:AduButtonSvg.Icon>
+                                    <CombinedGeometry 
                                 GeometryCombineMode="Union"
                                 Geometry1="M656.611556 143.36a19.456 19.456 0 0 1 17.976888 12.060444L723.171556 273.066667l8.305777 20.024889 20.024889 8.305777 117.077334 48.583111a19.342222 19.342222 0 0 1 10.581333 10.467556 20.138667 20.138667 0 0 1 0 15.018667L830.577778 491.975111 822.272 512l8.305778 20.024889 48.583111 117.077333a19.569778 19.569778 0 0 1-10.581333 25.486222l-117.077334 48.583112-20.024889 8.305777-8.305777 20.024889-48.583112 117.077334a19.569778 19.569778 0 0 1-25.486222 10.581333L532.024889 830.577778 512 822.272l-20.024889 8.305778L375.466667 879.160889a19.569778 19.569778 0 0 1-25.486223-10.581333l-49.152-117.077334-8.305777-20.024889-19.456-8.305777-117.646223-48.583112a19.569778 19.569778 0 0 1-10.581333-25.486222L193.422222 532.024889l8.305778-20.024889-8.305778-20.024889L144.839111 375.466667a19.569778 19.569778 0 0 1 10.581333-25.486223L273.066667 300.828444l20.024889-8.305777 7.736888-19.456 48.583112-117.077334a19.569778 19.569778 0 0 1 26.055111-11.150222L491.975111 193.422222l20.024889 8.305778 20.024889-8.305778 117.077333-48.583111a19.569778 19.569778 0 0 1 7.509334-1.479111m0-52.337778a71.111111 71.111111 0 0 0-27.534223 5.461334L512 145.066667 394.922667 96.483556a71.907556 71.907556 0 0 0-93.866667 38.912l-48.583111 117.077333-117.077333 48.583111a71.907556 71.907556 0 0 0-38.912 93.866667L145.066667 512 96.483556 629.077333a71.907556 71.907556 0 0 0 38.912 93.866667l117.077333 48.583111 48.583111 117.077333a71.907556 71.907556 0 0 0 93.866667 38.912L512 878.933333l117.077333 48.583111a73.272889 73.272889 0 0 0 27.534223 5.461334 71.68 71.68 0 0 0 66.332444-44.373334l48.583111-117.077333 117.077333-48.583111a71.907556 71.907556 0 0 0 38.912-93.866667L878.933333 512l48.583111-117.077333a71.907556 71.907556 0 0 0-38.912-93.866667l-117.077333-48.583111-48.583111-117.077333A71.793778 71.793778 0 0 0 656.611556 91.022222z"
                                 Geometry2="M460.913778 709.518222L265.443556 502.784l38.001777-35.953778 157.582223 166.570667 259.527111-273.408 38.001777 36.067555-297.642666 313.457778z"            >
-                                </CombinedGeometry>
-                            </Metro:AduButtonSvg.Icon>
-                        </Metro:AduButtonSvg>
-                        <Metro:MetroTextBlock
+                                    </CombinedGeometry>
+                                </Metro:AduButtonSvg.Icon>
+                            </Metro:AduButtonSvg>
+                            <Metro:MetroTextBlock
                         HorizontalAlignment="Stretch"
                         TextAlignment="Center"
                         Text="Ver 0.01"
                         Margin="5">
 
-                        </Metro:MetroTextBlock>
-                        <Metro:MetroTextBlock
+                            </Metro:MetroTextBlock>
+                            <Metro:MetroTextBlock
                         HorizontalAlignment="Stretch"
                         TextAlignment="Center"
                         Text="AGPL License"
                         Margin="5">
 
-                        </Metro:MetroTextBlock>
-                        <Metro:MetroTextBlock
+                            </Metro:MetroTextBlock>
+                            <Metro:MetroTextBlock
                         HorizontalAlignment="Stretch"
                         TextAlignment="Center"
                         Text="Build @.NET 5"
                         Margin="5">
 
-                        </Metro:MetroTextBlock>
+                            </Metro:MetroTextBlock>
 
-                        <Metro:MetroTextBlock
+                            <Metro:MetroTextBlock
                         HorizontalAlignment="Stretch"
                         TextAlignment="Center"
                         Text="Copyright ©2021"
                         Margin="0,5,0,20">
 
-                        </Metro:MetroTextBlock>
-                    </StackPanel>
-                </Border>
-            </Grid>
-            <Grid>
-                <Border MinWidth="150"
+                            </Metro:MetroTextBlock>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                
+                <Grid>
+                    <Border MinWidth="150"
                 Style="{StaticResource ShowControlBorder}">
-                    <StackPanel HorizontalAlignment="Center">
-                        <Metro:MetroTextBlock
+                        <StackPanel HorizontalAlignment="Center">
+                            <Metro:AduButtonSvg 
+                        Foreground="{DynamicResource DefaultBrush}"
+                        Padding="0"
+                        FontSize="30"
+                        IconHeight="40"
+                        IconWidth="50"
+                        Height="50"
+                        Width="50"
+                        Margin="0,20,0,5"
+                        Background="Transparent">
+                                <Metro:AduButtonSvg.Icon>
+                                    <CombinedGeometry 
+                                        GeometryCombineMode="Union"
+                                        Geometry1="M598.293333 746.005333l-60.714666 49.301334V516.266667a25.6 25.6 0 0 0-51.157334 0v279.04l-60.714666-49.301334a25.6 25.6 0 1 0-32.256 39.744l102.421333 83.2a25.621333 25.621333 0 0 0 32.256 0l102.4-83.2a25.6 25.6 0 1 0-32.234667-39.744z"
+                                        Geometry2="M810.666667 405.333333c-1.130667 0-2.24 0-3.328 0.042667a298.496 298.496 0 0 0-565.418667-84.906667A213.333333 213.333333 0 0 0 256 746.666667h88.064a68.416 68.416 0 0 1 65.514667-49.045334 68.48 68.48 0 0 1 34.176 9.173334V516.266667a68.266667 68.266667 0 0 1 136.490666 0v190.549333a68.266667 68.266667 0 0 1 87.168 16.085333A67.541333 67.541333 0 0 1 679.957333 746.666667H810.666667a170.666667 170.666667 0 0 0 0-341.333334z"
+                                        >
+                                    </CombinedGeometry>
+                                </Metro:AduButtonSvg.Icon>
+                            </Metro:AduButtonSvg>
+                            <Metro:MetroTextBlock Text="Dependencies："
+                                                  Margin="5">
+                                
+                            </Metro:MetroTextBlock>
+                            <Button
+                                pu:ButtonHelper.Icon="&#xf17a;"
+                                pu:ButtonHelper.ButtonStyle="Link"
+                                HorizontalAlignment="Stretch"
+                                Foreground="Black"
+                                FontSize="12"
+                                Command="AduOpenLink:ControlCommands.OpenLink"
+                                CommandParameter="https://download.visualstudio.microsoft.com/download/pr/c6a74d6b-576c-4ab0-bf55-d46d45610730/f70d2252c9f452c2eb679b8041846466/windowsdesktop-runtime-5.0.1-win-x64.exe"
+                                Content=".NET 5 Runtime"
+                                Margin="5">
+
+                            </Button>
+                            <Button
+                        pu:ButtonHelper.ButtonStyle="Link"
+                        pu:ButtonHelper.Icon="&#xf01a;"
+                        HorizontalAlignment="Stretch"
+                        Foreground="Black"
+                        FontSize="12"
+                        Command="AduOpenLink:ControlCommands.OpenLink"
+                        CommandParameter="https://www.office.com/"
+                        Content="Office 2013 or higher"
+                        Margin="0,5,0,20">
+
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                
+                <Grid>
+                    <Border MinWidth="150"
+                Style="{StaticResource ShowControlBorder}">
+                        <StackPanel HorizontalAlignment="Center">
+                            <Metro:MetroTextBlock
                         HorizontalAlignment="Stretch"
                         Text="Powered by"
                         FontSize="16"
                         Margin="5">
 
-                        </Metro:MetroTextBlock>
-                        <Metro:HCShield
+                            </Metro:MetroTextBlock>
+                            <Metro:HCShield
                         Margin="10"
                         Subject="dotnet" Status="iText7" Color="#f99d25"  
                         Command="AduOpenLink:ControlCommands.OpenLink" 
                         CommandParameter="https://github.com/itext/itext7-dotnet">
 
-                        </Metro:HCShield>
-                        <Metro:HCShield
+                            </Metro:HCShield>
+                            <Metro:HCShield
                         Margin="10"
                         Subject="WPF" Status="PanuonUI.Silver" Color="Silver"  
                         Command="AduOpenLink:ControlCommands.OpenLink" 
                         CommandParameter="https://github.com/Panuon/PanuonUI.Silver">
 
-                        </Metro:HCShield>
-                        <Metro:HCShield
+                            </Metro:HCShield>
+                            <Metro:HCShield
                         Margin="10"
                         Subject="WPF" Status="AduSkin" Color="#ee796f"  
                         Command="AduOpenLink:ControlCommands.OpenLink" 
                         CommandParameter="https://github.com/aduskin/AduSkin" Cursor="Hand">
 
-                        </Metro:HCShield>
-                        <Metro:HCShield Subject="WPF" Status="Arthas" Color="#6C819E" Margin="10" Command="AduOpenLink:ControlCommands.OpenLink" CommandParameter="https://github.com/1217950746/Arthas-WPFUI">
+                            </Metro:HCShield>
+                            <Metro:HCShield Subject="WPF" Status="Arthas" Color="#6C819E" Margin="10" Command="AduOpenLink:ControlCommands.OpenLink" CommandParameter="https://github.com/1217950746/Arthas-WPFUI">
 
-                        </Metro:HCShield>
-                        <Metro:HCShield Subject="WPF" Status="WPF.UI" Color="#3399FF" Margin="10" Command="AduOpenLink:ControlCommands.OpenLink" CommandParameter="https://github.com/zhidanfeng/WPF.UI" Cursor="Hand">
+                            </Metro:HCShield>
+                            <Metro:HCShield Subject="WPF" Status="WPF.UI" Color="#3399FF" Margin="10" Command="AduOpenLink:ControlCommands.OpenLink" CommandParameter="https://github.com/zhidanfeng/WPF.UI" Cursor="Hand">
 
-                        </Metro:HCShield>
-                        <Metro:HCShield Subject="WPF" Status="HandyControl" Color="#F06632" Margin="10" Command="AduOpenLink:ControlCommands.OpenLink" CommandParameter="https://github.com/HandyOrg/HandyControl">
+                            </Metro:HCShield>
+                            <Metro:HCShield Subject="WPF" Status="HandyControl" Color="#F06632" Margin="10" Command="AduOpenLink:ControlCommands.OpenLink" CommandParameter="https://github.com/HandyOrg/HandyControl">
 
-                        </Metro:HCShield>
-                    </StackPanel>
-                </Border>
-            </Grid>
-            <Grid>
-                <Border MinWidth="150"
+                            </Metro:HCShield>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid>
+                    <Border MinWidth="150"
                 Style="{StaticResource ShowControlBorder}">
-                    <StackPanel HorizontalAlignment="Center">
-                        <Ellipse Width="50"
+                        <StackPanel HorizontalAlignment="Center">
+                            <Ellipse Width="50"
                              Height="50"
                              Margin="0,20,0,5"
                              >
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="/Image/4610610.jpg" ></ImageBrush>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <Button
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Image/4610610.jpg" ></ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Button
                         pu:ButtonHelper.ButtonStyle="Link"
                         pu:ButtonHelper.Icon="&#xf015;"
                         HorizontalAlignment="Stretch"
@@ -134,8 +191,8 @@
                         Content="changwei.tech"
                         Margin="5">
 
-                        </Button>
-                        <Button
+                            </Button>
+                            <Button
                         pu:ButtonHelper.ButtonStyle="Link"
                         pu:ButtonHelper.Icon="&#xf09b;"
                         HorizontalAlignment="Stretch"
@@ -146,10 +203,11 @@
                         Content="github/ChangweiZhang"
                         Margin="0,5,0,20">
 
-                        </Button>
-                    </StackPanel>
-                </Border>
-            </Grid>
-        </Metro:MetroWaterfallFlow>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Metro:MetroWaterfallFlow>
+        </Metro:MetroScrollViewer>
     </Grid>
 </UserControl>

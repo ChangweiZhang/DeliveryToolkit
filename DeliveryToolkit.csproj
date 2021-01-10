@@ -2,21 +2,29 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5-windows</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
+    <PublishSingleFile>false</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+    <PublishTrimmed>false</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Image\4610610.jpg" />
+    <None Remove="Image\swimlane-wpf.png" />
     <None Remove="Image\toolkit.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Image\4610610.jpg" />
+    <Resource Include="Image\swimlane-wpf.png" />
     <Resource Include="Image\toolkit.png" />
   </ItemGroup>
 
-  
+
 
   <ItemGroup>
     <PackageReference Include="AduSkin" Version="1.1.1.9" />

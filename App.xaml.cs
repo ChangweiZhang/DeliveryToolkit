@@ -1,14 +1,10 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using System;
+using Microsoft.Win32;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace DeliveryToolkit
@@ -18,7 +14,7 @@ namespace DeliveryToolkit
     /// </summary>
     public partial class App : Application
     {
-        
+        public const string THEME_KEY = "theme_key";
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -30,6 +26,11 @@ namespace DeliveryToolkit
             AppCenter.SetCountryCode(countryCode);
             Analytics.SetEnabledAsync(true);
             Crashes.SetEnabledAsync(true);
+            Analytics.TrackEvent("AppStart", new Dictionary<string, string>
+            {
+                ["message"] = "App start"
+            });
+
         }
     }
 }
