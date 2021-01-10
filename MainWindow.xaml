@@ -30,7 +30,8 @@
                     HorizontalContentAlignment="Center"
                     FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                     Foreground="White"
-                    Command="AduOpenLink:ControlCommands.OpenLink" CommandParameter="https://www.cnblogs.com/aduskin"/>
+                    Command="AduOpenLink:ControlCommands.OpenLink" 
+                    CommandParameter="https://github.com/ChangweiZhang/DeliveryToolkit"/>
                 <MenuItem Style="{StaticResource MenuItem_NonStyle}" Height="30" >
                     <MenuItem.Header>
                         <StackPanel Margin="33,0"
