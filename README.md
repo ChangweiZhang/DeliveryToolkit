@@ -15,7 +15,13 @@ A set of productivity tools
   <img src="https://aidiag890.blob.core.chinacloudapi.cn/resource/pdf.png" width=500/>
   <p>pdf</p>
   </div>
-  
+
+
+# Prerequisites
+
+- [.NET 5 Runtime](https://download.visualstudio.microsoft.com/download/pr/c6a74d6b-576c-4ab0-bf55-d46d45610730/f70d2252c9f452c2eb679b8041846466/windowsdesktop-runtime-5.0.1-win-x64.exe)
+- Office (2013 or higher is recommanded)
+
 # License
   
   AGPL, inhert from iText7 Community project
