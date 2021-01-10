@@ -14,6 +14,6 @@ A set of productivity tools
   
   
   
-  # License
+# License
   
   AGPL, inhert from iText7 Community project
