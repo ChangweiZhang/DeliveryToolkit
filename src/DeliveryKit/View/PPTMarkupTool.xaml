@@ -100,6 +100,7 @@
                     DisplayMemberPath="Name"
                     Foreground="{Binding ThemeBrush,Source={x:Static svc:ThemeManager.Instance}}">
                 </Metro:AduComboBox>
+
             </Grid>
 
             <Button pu:ButtonHelper.ButtonStyle="Standard"

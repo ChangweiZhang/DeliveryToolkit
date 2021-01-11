@@ -10,15 +10,59 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Drawing.Text;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
+using iText.Layout.Font;
+using FontInfo = DeliveryToolkit.Model.FontInfo;
+using iText.IO.Font;
+using iText.IO.Font.Constants;
 
 namespace DeliveryToolkit.ViewModel
 {
     public class PPTToolViewModel : GalaSoft.MvvmLight.ViewModelBase
     {
         #region 水印
+        public RelayCommand SelectFontCommand => new RelayCommand(SelectFont);
+        void SelectFont()
+        {
+            var dialog = new FontDialog()
+            {
+                FontMustExist = true
+            };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                CurrentFont = new FontInfo
+                {
+                    FamilyName = dialog.Font.SystemFontName
+                };
+            }
+        }
+        static List<FontInfo> GetSystemFonts()
+        {
+            List<FontInfo> fonts = new List<FontInfo>();
+
+            using (InstalledFontCollection fontsCollection = new InstalledFontCollection())
+            {
+                FontFamily[] fontFamilies = fontsCollection.Families;
+
+                foreach (FontFamily font in fontFamilies)
+                {
+
+                    var tf = new Font(font.Name, 20, FontStyle.Regular, GraphicsUnit.World);
+                    fonts.Add(new FontInfo
+                    {
+                        FamilyName = font.Name,
+                        Name = font.Name
+                    });
+
+                }
+            }
+            return fonts;
+        }
+
         private string _fontColor = "#ff4d4d";
 
         public string FontColor
@@ -41,11 +85,16 @@ namespace DeliveryToolkit.ViewModel
             set { Set(ref _fontSize, value); }
         }
         private List<FontInfo> _fontList = new List<FontInfo> {
-            new FontInfo{ Name="宋体",FamilyName="STSong-Light"},
-            new FontInfo{ Name="黑体",FamilyName="MHei-Medium"},
-            new FontInfo{ Name="刻石录颜体",FamilyName="MSung-Light"}
+            new FontInfo{ Name="中文字体",FamilyName="STSong-Light"
+                //Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Font","Segoe UI Bold.ttf")
+            },
+            new FontInfo{ Name=StandardFonts.TIMES_BOLD,FamilyName=StandardFonts.TIMES_BOLD},
+            new FontInfo{ Name=StandardFonts.COURIER_BOLD,FamilyName=StandardFonts.COURIER_BOLD},
+            new FontInfo{ Name=StandardFonts.HELVETICA_BOLD,FamilyName=StandardFonts.HELVETICA_BOLD},
+            new FontInfo{ Name=StandardFonts.SYMBOL,FamilyName=StandardFonts.SYMBOL},
+            new FontInfo{ Name=StandardFonts.ZAPFDINGBATS,FamilyName=StandardFonts.ZAPFDINGBATS},
         };
-
+        //private List<FontInfo> _fontList = GetSystemFonts();
         public List<FontInfo> FontList
         {
             get { return _fontList; }

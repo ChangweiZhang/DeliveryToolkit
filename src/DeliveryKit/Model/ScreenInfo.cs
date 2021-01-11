@@ -11,7 +11,7 @@ namespace DeliveryToolkit.Model
 {
     public class ScreenInfo : ViewModelBase
     {
-        private double _screenWidth = App.Current.MainWindow.Width;
+        private double _screenWidth = Application.Current.MainWindow.Width;
 
         public double ScreenWidth
         {
