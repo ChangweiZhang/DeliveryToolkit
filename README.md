@@ -19,7 +19,7 @@ A set of productivity tools
 
 # Prerequisites
 
-- [.NET 5 Runtime](https://download.visualstudio.microsoft.com/download/pr/c6a74d6b-576c-4ab0-bf55-d46d45610730/f70d2252c9f452c2eb679b8041846466/windowsdesktop-runtime-5.0.1-win-x64.exe)
+- [.NET 5 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/current/runtime)
 - Office (2013 or higher is recommanded)
 
 # License
