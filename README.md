@@ -3,7 +3,7 @@
 # DeliveryToolkit
 A set of productivity tools
 
-- PPT WaterMaker Tool
+- PPT & PDF WaterMaker Tool
 
   批量转换PPT到pdf，并加上水印
   水印样式可自定义
