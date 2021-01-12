@@ -196,7 +196,9 @@ namespace DeliveryToolkit.ViewModel
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 PPTFolder = dialog.SelectedPath;
-                var files = Directory.GetFiles(PPTFolder).Where(f => f.ToLower().EndsWith(".ppt") || f.ToLower().EndsWith(".pptx")).ToArray();
+                var files = Directory.GetFiles(PPTFolder).Where(f => f.ToLower().EndsWith(".ppt")
+                || f.ToLower().EndsWith(".pptx")
+                || f.ToLower().EndsWith(".pdf")).ToArray();
                 var pptFileList = new List<PPTFile>();
                 for (var i = 0; i < files.Length; i++)
                 {
@@ -216,6 +218,10 @@ namespace DeliveryToolkit.ViewModel
 
         private async void RunPPTProcess()
         {
+            foreach (var file in PPTFiles)
+            {
+                file.State = ProcessState.Unstarted;
+            }
             IsNoProcessRunning = false;
             IsProcessEnable = false;
             ProgressVal = 0;
@@ -227,12 +233,34 @@ namespace DeliveryToolkit.ViewModel
                     var pptFile = PPTFiles[i];
                     pptFile.State = ProcessState.Processing;
                     var result = false;
-                    var pdfFile = await ConvertPPTToPDFAsync(pptFile.Path);
+                    var format = Path.GetExtension(pptFile.Path).ToLower();
+                    var pdfFile = string.Empty;
+                    var fileName = Path.GetFileNameWithoutExtension(pptFile.Path);
+                    var tempFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "temp");
+                    if (!Directory.Exists(tempFolder))
+                    {
+                        Directory.CreateDirectory(tempFolder);
+                    }
+                    var outputFile = Path.Combine(tempFolder, $"{fileName}.pdf");
+                    if (format == ".pdf")
+                    {
+                        File.Copy(pptFile.Path, outputFile);
+                        pdfFile = outputFile;
+                    }
+                    else
+                    {
+                        pdfFile = await ConvertPPTToPDFAsync(pptFile.Path, outputFile);
+                    }
                     if (!string.IsNullOrEmpty(pdfFile))
                     {
                         pptFile.Pdf = pdfFile;
                         var dp = ServiceLocator.Current.GetInstance<IPdfService>();
-                        var destFile = Path.Combine(Path.GetDirectoryName(pptFile.Path), $"{ pptFile.Name}.pdf");
+                        var outputFolder = Path.Combine(Path.GetDirectoryName(pptFile.Path), "output");
+                        if (!Directory.Exists(outputFolder))
+                        {
+                            Directory.CreateDirectory(outputFolder);
+                        }
+                        var destFile = Path.Combine(outputFolder, $"{ pptFile.Name}.pdf");
                         if (dp?.AddWaterMarkerToPdf(pptFile.Pdf, destFile, WaterMarker, CurrentFont.FamilyName, FontColor, FontSize) == true)
                         {
                             result = true;
@@ -256,7 +284,10 @@ namespace DeliveryToolkit.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBoxX.Show($"添加水印失败，请检查文件后再试\nerror:{ex.ToString()}", "错误");
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBoxX.Show($"添加水印失败，请检查文件后再试\nerror:{ex.ToString()}", "错误");
+                });
                 return;
             }
             finally
@@ -267,38 +298,43 @@ namespace DeliveryToolkit.ViewModel
             Notice.Show($"文件处理结果：\n成功 {okCount} 失败 {errorCount}\n 输出文件夹位于PPT文件目录", "任务结束", Panuon.UI.Silver.MessageBoxIcon.Success);
         }
 
-        private async Task<string> ConvertPPTToPDFAsync(string inputFile)
+        private async Task<string> ConvertPPTToPDFAsync(string inputFile, string outputFile)
         {
             try
             {
-                var fileName = Path.GetFileNameWithoutExtension(inputFile);
-                var tempFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "temp");
-                if (!Directory.Exists(tempFolder))
-                {
-                    Directory.CreateDirectory(tempFolder);
-                }
-                var outputFile = Path.Combine(tempFolder, $"{fileName}.pdf");
+
+                await Task.Delay(500);
                 await Task.Factory.StartNew(() =>
                 {
                     var app = new Microsoft.Office.Interop.PowerPoint.Application();
-                    try
+                    var retryCount = 3;
+                    while (retryCount <= 3 && retryCount > 0)
                     {
-                        var presentations = app.Presentations;
-                        var presentation = presentations.Open(inputFile, MsoTriState.msoTrue, MsoTriState.msoFalse, MsoTriState.msoFalse);
-                        presentation.ExportAsFixedFormat2(outputFile, Microsoft.Office.Interop.PowerPoint.PpFixedFormatType.ppFixedFormatTypePDF, Microsoft.Office.Interop.PowerPoint.PpFixedFormatIntent.ppFixedFormatIntentScreen);
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBoxX.Show("Office转换文件失败，请检查Office是否正确安装", "错误");
-                        Analytics.TrackEvent("OfficeError", new Dictionary<string, string>
+                        try
                         {
-                            ["message"] = error.ToString()
-                        });
+                            var presentations = app.Presentations;
+                            var presentation = presentations.Open(inputFile, MsoTriState.msoTrue, MsoTriState.msoFalse, MsoTriState.msoFalse);
+                            presentation.ExportAsFixedFormat(outputFile, Microsoft.Office.Interop.PowerPoint.PpFixedFormatType.ppFixedFormatTypePDF, Microsoft.Office.Interop.PowerPoint.PpFixedFormatIntent.ppFixedFormatIntentScreen);
+                            retryCount++;
+
+                            app.Quit();
+                        }
+                        catch (Exception error)
+                        {
+                            retryCount--;
+                            //App.Current.Dispatcher.Invoke(() =>
+                            // {
+                            //     MessageBoxX.Show("Office转换文件失败，请检查Office是否正确安装", "错误");
+                            // });
+
+                            Analytics.TrackEvent("OfficeError", new Dictionary<string, string>
+                            {
+                                ["message"] = error.ToString()
+                            });
+                        }
+
                     }
-                    finally
-                    {
-                        app.Quit();
-                    }
+
                 });
                 if (File.Exists(outputFile))
                 {
@@ -312,6 +348,7 @@ namespace DeliveryToolkit.ViewModel
                     ["message"] = ex.ToString()
                 });
             }
+
             return string.Empty;
         }
         //private bool AddWaterMarkerToPdf(string pdfFile)

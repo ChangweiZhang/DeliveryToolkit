@@ -102,7 +102,10 @@ namespace DeliveryToolkit.Service
                         }
                         else
                         {
-                            MessageBoxX.Show($"没有找到字体{fontFamily}，请确认已安装", "字体错误");
+                            App.Current.Dispatcher.Invoke(() =>
+                            {
+                                MessageBoxX.Show($"没有找到字体{fontFamily}，请确认已安装", "字体错误");
+                            });
                             return false;
                         }
                         return true;

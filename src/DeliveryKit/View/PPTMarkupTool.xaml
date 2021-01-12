@@ -22,7 +22,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock Text="选取PPT目录"
+            <TextBlock Text="选取文件目录"
                        FontSize="14"
                        Margin="20"
                        MaxHeight="20"/>

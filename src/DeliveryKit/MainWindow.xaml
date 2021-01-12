@@ -64,7 +64,7 @@
                 </Style>
             </Metro:AduTabControl.Resources>
 
-            <Metro:AduTabItem Header="PPT水印工具">
+            <Metro:AduTabItem Header="PPT/PDF水印工具">
                 <Border BorderBrush="{StaticResource DefaultBorderBrush}" BorderThickness="0,1,0,0">
                     <ContentControl Content="{Binding PPTTool}"/>
                 </Border>
