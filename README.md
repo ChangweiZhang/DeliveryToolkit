@@ -5,8 +5,11 @@ A set of productivity tools
 
 - PPT & PDF WaterMark Tool
 
-  批量转换PPT到pdf，并加上水印
-  水印样式可自定义
+  #### 批量转换PPT到pdf，并加上水印
+  
+  #### 或直接读取pdf，添加水印
+  
+  #### 水印样式可自定义
   
   batch convert PPT files into pdf format with customized watermatcker
   <div  align="center">    
