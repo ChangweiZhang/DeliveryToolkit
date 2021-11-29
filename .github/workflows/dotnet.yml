@@ -10,8 +10,7 @@ jobs:
   build:
 
     runs-on: windows-latest
-    
-     env:
+    env:
       Solution_Name: DeliveryToolkit.sln        
 
     steps:
